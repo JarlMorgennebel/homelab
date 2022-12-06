@@ -1,3 +1,14 @@
+# What is this
+A quick how to install Seafile Professional within a docker stack (docker-compose) including anti-virus, elastic-search and DB behind nginx-proxy-manager
+as reverse proxy and Let's Encrypt SSL certificate manager with a nice GUI.
+
+## Environment
+- Host IP: 192.168.2.10
+- Seafile Port: 8180/tcp for HTTP -> 80/tcp 
+- nginx-proxy-manager Port: 80/tcp (HTTP), 443/tcp (HTTPS) and 81/tcp (HTTP)
+- Seafile URL: wolke8.intern.<MYDOMAIN>.de
+- Firewall rules: Allow incoming 80/tcp and 443/tcp to HOST IP
+
 # HowTo
 
 ## Initial Seafile Pro setup
