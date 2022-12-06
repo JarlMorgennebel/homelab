@@ -4,7 +4,6 @@
 - Copy docker-compose.yml to destination (example: /opt/docker-seafile-pro)
 - Adjust placeholder variables
 - Replace DB root password twice (mysql container and seafile container)
-- chown -R 
 - Initial start with docker-compose up and watch the logs
 - Stop with Control-C
 
@@ -39,4 +38,4 @@ client_max_body_size 0;
 - docker-compose down
 - docker-compose up -d
 
-DOne
+Done
