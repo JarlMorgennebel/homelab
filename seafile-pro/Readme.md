@@ -15,12 +15,13 @@ as reverse proxy and Let's Encrypt SSL certificate manager with a nice GUI.
 - Copy docker-compose.yml to destination (example: /opt/docker-seafile-pro)
 - Adjust placeholder variables
 - Replace DB root password twice (mysql container and seafile container)
-- Initial start with docker-compose up and watch the logs
+- Initial start with docker-compose up and watch the logs (plenty of errors for elasticsearch)
 - Stop with Control-C
+- chmod -R 777 ./seafile-elasticsearch
 
 ## Install and fire up nginx-proxy-manager
-- Login into ngp
-- Add new proxy host (Type in exact domain-name as specified in seafile-docker-compose.yml
+- Login into nginx-proxy-manager
+- Add new proxy host (wolke8.intern.myCustomDomain.de as specified in seafile-docker-compose.yml
 - Use HTTP (not HTTPS) to HOST IP, Port 8180 (as specified in seafile-docker-compose.yml)
 - Turn on SSL options and force SSL
 - Add custom nginx configuration within Advanced
