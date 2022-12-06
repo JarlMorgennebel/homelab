@@ -6,7 +6,7 @@ as reverse proxy and Let's Encrypt SSL certificate manager with a nice GUI.
 - Host IP: 192.168.2.10
 - Seafile Port: 8180/tcp for HTTP -> 80/tcp 
 - nginx-proxy-manager Port: 80/tcp (HTTP), 443/tcp (HTTPS) and 81/tcp (HTTP)
-- Seafile URL: wolke8.intern.<MYDOMAIN>.de
+- Seafile URL: wolke8.intern.myCustomDomain.de
 - Firewall rules: Allow incoming 80/tcp and 443/tcp to HOST IP
 
 # HowTo
