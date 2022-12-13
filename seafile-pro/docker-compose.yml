@@ -4,7 +4,7 @@ services:
     image: mariadb:10.5
     container_name: seafile-mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=haznFwo7X6YQ9ZbKLnsc  # Requested, set the root's password of MySQL service.
+      - MYSQL_ROOT_PASSWORD=SecretPassword  # Requested, set the root's password of MySQL service.
       - MYSQL_LOG_CONSOLE=true
     volumes:
       - ./seafile-mysql/db:/var/lib/mysql  # Requested, specifies the path to MySQL data persistent store.
@@ -37,26 +37,33 @@ services:
         hard: -1
     mem_limit: 2g
     volumes:
-      - ./seafile-elasticsearch/data:/usr/share/elasticsearch/data  # Requested, specifies the path to Elasticsearch data persistent store.
+      - ./seafile-elasticsearch/data:/usr/share/elasticsearch/data  # Requested, specifies the path to Elasticsearch data persistent store
+.
     networks:
       - seafile-net
           
   seafile:
     image: docker.seadrive.org/seafileltd/seafile-pro-mc:latest
     container_name: seafile
+    privileged: true # Required for seaf-fuse.sh
     ports:
-      - "8180:80"
+      - "8180:80"    # We use Nginx-Proxy-Manager in front of the nginx inside this container
     volumes:
-      # External USB disk /dev/sdb1 ext4 formatted. Replace as needed
-      - /mnt/sdb1-usb/seafile:/shared   # Requested, specifies the path to Seafile data persistent store.
+      - /mnt/sdb1-usb/seafile:/shared      # Requested, specifies the path to Seafile data persistent store.
+      - /mnt/sdc1-usb:/mnt/seafile-backup  # Required for seaf-fuse.sh
+      - /lib/modules:/lib/modules:ro       # Required for seaf-fuse.sh
+      - /sbin/modprobe:/sbin/modprobe:ro   # Required for seaf-fuse.sh
+      - /sbin/rmmod:/sbin/rmmod:ro         # Required for seaf-fuse.sh
+      - /usr/bin/rsync:/usr/bin/rsync:ro   # Required for backup and seaf-fuse.sh
+      - /usr/lib/x86_64-linux-gnu/libxxhash.so.0:/usr/lib/x86_64-linux-gnu/libxxhash.so.0 # Required for rsync
     environment:
       - DB_HOST=db
-      - DB_ROOT_PASSWD=haznFwo7X6YQ9ZbKLnsc  # Requested, the value should be root's password of MySQL service.
+      - DB_ROOT_PASSWD=SecretPassword  # Requested, the value should be root's password of MySQL service.
       - TIME_ZONE=Europe/Berlin # Optional, default is UTC. Should be uncomment and set to your local time zone.
-      - SEAFILE_ADMIN_EMAIL=admin@mydomain.com # Specifies Seafile admin user, default is 'me@example.com'
-      - SEAFILE_ADMIN_PASSWORD=veryDifficultPassword    # Specifies Seafile admin password, default is 'asecret'
+      - SEAFILE_ADMIN_EMAIL=MyEmailAdress@mydomain.de # Specifies Seafile admin user, default is 'me@example.com'
+      - SEAFILE_ADMIN_PASSWORD=SuperSecretPassword     # Specifies Seafile admin password, default is 'asecret'
       - SEAFILE_SERVER_LETSENCRYPT=false   # Whether to use https or not
-      - SEAFILE_SERVER_HOSTNAME=myseafile.domainname.com # Specifies your host name if https is enabled
+      - SEAFILE_SERVER_HOSTNAME=my-seafile.domain.de # Specifies your host name if https is enabled
     depends_on:
       - db
       - memcached
