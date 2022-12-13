@@ -2,6 +2,8 @@
 A quick how to install Seafile Professional within a docker stack (docker-compose) including anti-virus, elastic-search and DB behind nginx-proxy-manager
 as reverse proxy and Let's Encrypt SSL certificate manager with a nice GUI.
 
+This dockered Seafile supports seaf-fuse.sh filesystem inside the container and rsync to a second drive.
+
 ## Environment
 - Host IP: 192.168.2.10
 - Seafile Port: 8180/tcp for HTTP -> 80/tcp 
@@ -50,4 +52,9 @@ client_max_body_size 0;
 - docker-compose down
 - docker-compose up -d
 
-Done
+# Backup with FUSE and rsync
+- Mount backup-drive to /mnt/sdc1-usb (as specified in the docker-compose.yml)
+- docker exec -it seafile /bin/bash (will give you access to container)
+- modprobe fuse (load kernel module)
+- /opt/seafile-server-latest/seaf-fuse.sh start /shared/seafile/fuse-data
+- rsync -avP /shared/seafile/fuse-data /mnt/seafile-backup
