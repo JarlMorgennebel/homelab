@@ -10,8 +10,17 @@ This dockered Seafile supports seaf-fuse.sh filesystem inside the container and 
 - nginx-proxy-manager Port: 80/tcp (HTTP), 443/tcp (HTTPS) and 81/tcp (HTTP)
 - Seafile URL: wolke8.intern.myCustomDomain.de
 - Firewall rules: Allow incoming 80/tcp and 443/tcp to HOST IP
+- /dev/sda: Internal disk
+- /dev/sdb: External disk for Seafile data and configs (/dev/sdb1 mounted on /mnt/sdb1-usb on the host)
+- /dev/sdc: External disk for Seafile backup (/dev/sdc1 mounted on /mnt/sdc1-usb on the host)
 
 # HowTo
+
+## Preparations
+- Add /mnt/sdb1-usb to /etc/fstab on the host
+- Add /mnt/sdc1-usb to /etc/fstab on the host
+- apt-get install rsync
+- apt-get install rclone (recommended for encrypted cloud backup) and configure as needed
 
 ## Initial Seafile Pro setup
 - Copy docker-compose.yml to destination (example: /opt/docker-seafile-pro)
@@ -52,9 +61,12 @@ client_max_body_size 0;
 - docker-compose down
 - docker-compose up -d
 
-# Backup with FUSE and rsync
+## Backup with FUSE and rsync
 - Mount backup-drive to /mnt/sdc1-usb (as specified in the docker-compose.yml)
 - docker exec -it seafile /bin/bash (will give you access to container)
 - modprobe fuse (load kernel module)
 - /opt/seafile-server-latest/seaf-fuse.sh start /shared/seafile/fuse-data
 - rsync -avP /shared/seafile/fuse-data /mnt/seafile-backup
+
+## Cloud backup
+- Add rclone cronjob
