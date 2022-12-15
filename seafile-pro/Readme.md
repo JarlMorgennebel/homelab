@@ -6,8 +6,8 @@ This dockered Seafile supports seaf-fuse.sh filesystem inside the container and 
 
 ## Environment
 - Host IP: 192.168.2.10
-- Seafile Port: 8180/tcp for HTTP -> 80/tcp 
-- nginx-proxy-manager Port: 80/tcp (HTTP), 443/tcp (HTTPS) and 81/tcp (HTTP)
+- Seafile Port: 8180/tcp for HTTP (Host) -> 80/tcp (Container)
+- nginx-proxy-manager Port: 80/tcp (HTTP), 443/tcp (HTTPS) and 81/tcp (HTTP) (all Host)
 - Seafile URL: wolke8.intern.myCustomDomain.de
 - Firewall rules: Allow incoming 80/tcp and 443/tcp to HOST IP
 - /dev/sda: Internal disk
