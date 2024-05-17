@@ -68,4 +68,7 @@ Update initram and grub
 
     update-initramfs -u -k 'all'
     update-grub
+    shutdown -r now
+
+It takes around 8-12 seconds for clevis to unlock the crypted disk /dev/sda3 during reboot.
 
