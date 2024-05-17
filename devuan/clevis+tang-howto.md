@@ -18,7 +18,9 @@ where YYYYMM stands for YearMonth.
 Enable tang-service and reboot. Setup DNS for Tang server (in this example http://tang.mydomain.lan).
 
 ### Clevis
-Install Devuan 5.0 as per your preferences. Use LVM-over-LUKS, e.g.
+Install Devuan 5.0 as per your preferences using Expert Install, Manual partition.
+
+Use LVM-over-LUKS, e.g.
 
     root@gclevis:/etc/boot.d# lsblk
     NAME                MAJ:MIN RM  SIZE RO TYPE  MOUNTPOINTS
@@ -32,7 +34,7 @@ Install Devuan 5.0 as per your preferences. Use LVM-over-LUKS, e.g.
         ├─FlashMem-swap 254:2    0  3.7G  0 lvm   [SWAP]
         └─FlashMem-opt  254:3    0    9G  0 lvm   /opt
 
-This design is 32 GB disk sda. EFI (384 MByte in sda1) and /boot (ext4, 1 GByte) are not encrypted.
+This design is 32 GB disk sda. EFI (384 MByte in sda1) and /boot (ext4, 1 GByte in sda2) are not encrypted.
 /dev/sda3 is encrypted (sda3_crypt) with remaining space. LVM is on top and provides a 17GB logical
 / using ext4, 4 GB swap and remaining /opt using ext4.
 
@@ -46,3 +48,24 @@ Devuan has two challenges to work with Tang:
 We will modify initramfs to archive the same.
 
 #### DNS resolution
+Create /etc/initramfs-tools/hooks/curl and copy content from file here.
+
+#### IP network during early boot
+Create /etc/boot.d/add-to-initramfs.conf and copy content from file here.
+
+Make both files executable.
+
+Add to //etc/initramfs-tools/modules the module for your network card (use lsusb or lspci to identify).
+
+#### Final configuration
+Reboot to enable extended initramfs.conf - with monitor and keyboard to enter the LUKS password
+
+Enable clevis:
+
+    clevis luks bind -d /dev/sda3 tang '{"url":"http://tang.mydomain.lan"}'
+
+Update initram and grub
+
+    update-initramfs -u -k 'all'
+    update-grub
+
