@@ -1,6 +1,7 @@
 ## Clevis and Tang with Devuan 5.0
 
 Clevis and Tang is a security suite for LUKS encrypted disks and Network based policies (decryption) during boot time.
+
 See: https://github.com/latchset/clevis
 
 ### Tang Server
@@ -16,3 +17,32 @@ where YYYYMM stands for YearMonth.
 
 Enable tang-service and reboot. Setup DNS for Tang server (in this example http://tang.mydomain.lan).
 
+### Clevis
+Install Devuan 5.0 as per your preferences. Use LVM-over-LUKS, e.g.
+
+    root@gclevis:/etc/boot.d# lsblk
+    NAME                MAJ:MIN RM  SIZE RO TYPE  MOUNTPOINTS
+    sda                   8:0    0 29.8G  0 disk  
+    ├─sda1                8:1    0  365M  0 part  /boot/efi
+    ├─sda2                8:2    0  954M  0 part  /boot
+    └─sda3                8:3    0 28.5G  0 part  
+      └─sda3_crypt      254:0    0 28.5G  0 crypt 
+        ├─FlashMem-root 254:1    0 15.8G  0 lvm   /var/lib/docker
+        │                                         /
+        ├─FlashMem-swap 254:2    0  3.7G  0 lvm   [SWAP]
+        └─FlashMem-opt  254:3    0    9G  0 lvm   /opt
+
+This design is 32 GB disk sda. EFI (384 MByte in sda1) and /boot (ext4, 1 GByte) are not encrypted.
+/dev/sda3 is encrypted (sda3_crypt) with remaining space. LVM is on top and provides a 17GB logical
+/ using ext4, 4 GB swap and remaining /opt using ext4.
+
+Configure a static IP address per your network. Configure DNS.
+
+Devuan has two challenges to work with Tang:
+
+* The kernel has no working network and is missing curl for clevis during very early boot stages
+* The kernel has no working DNS resolution during very early boot stages.
+
+We will modify initramfs to archive the same.
+
+#### DNS resolution
