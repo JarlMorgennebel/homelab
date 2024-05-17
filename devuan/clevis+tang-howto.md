@@ -72,3 +72,4 @@ Update initram and grub
 
 It takes around 8-12 seconds for clevis to unlock the crypted disk /dev/sda3 during reboot.
 
+You do not need _netdev entries in /etc/crypttab as documented elsewhere.
