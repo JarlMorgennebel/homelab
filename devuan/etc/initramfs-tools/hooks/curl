@@ -1,0 +1,25 @@
+#!/bin/sh -e
+PREREQS=""
+
+case $1 in
+	prereqs) echo "${PREREQS}"; exit 0;;
+esac
+
+. /usr/share/initramfs-tools/hook-functions
+
+# Add DNS libs
+mkdir -p $DESTDIR/lib/x86_64-linux-gnu
+cp -a /lib/x86_64-linux-gnu/libnss* $DESTDIR/lib/x86_64-linux-gnu
+cp -a /lib/x86_64-linux-gnu/libresolv* $DESTDIR/lib/x86_64-linux-gnu
+
+# Add curl binary
+copy_exec /usr/bin/curl /bin
+copy_exec /usr/bin/curl /usr/bin
+
+# Add nameserver
+echo "nameserver 192.168.1.2\n" > ${DESTDIR}/etc/resolv.conf
+
+# Add ca-certs to support HTTPS to tang
+mkdir -p $DESTDOR/usr/share
+cp -ar /usr/share/ca-certificates $DESTDIR/usr/share
+cp -ar /etc/ssl $DESTDIR/etc/
