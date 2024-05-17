@@ -55,7 +55,7 @@ Create /etc/boot.d/add-to-initramfs.conf and copy content from file here.
 
 Make both files executable.
 
-Add to //etc/initramfs-tools/modules the module for your network card (use lsusb or lspci to identify).
+Add to /etc/initramfs-tools/modules the module for your network card (use lsusb or lspci to identify).
 
 #### Final configuration
 Reboot to enable extended initramfs.conf - with monitor and keyboard to enter the LUKS password
