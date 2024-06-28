@@ -60,6 +60,10 @@ Add to /etc/initramfs-tools/modules the module for your network card (use lsusb 
 #### Final configuration
 Reboot to enable extended initramfs.conf - with monitor and keyboard to enter the LUKS password
 
+Install clevis:
+
+    apt install clevis-luks clevis-initramfs clevis
+
 Enable clevis:
 
     clevis luks bind -d /dev/sda3 tang '{"url":"http://tang.mydomain.lan"}'
