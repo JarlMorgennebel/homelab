@@ -25,5 +25,5 @@ Situation:
 - Get UUID from virtual encrypted disk and add to fstab:
   `blkid /dev/mapper/config`
 - Modify fstab entry and use *noauto* flag:
-  `UUID=d2dXXXZYY-YYZZ-YXXXXX-XX116	/root/.config	ext4	discard,noauto	0	0`
+  ```UUID=d2dXXXZYY-YYZZ-YXXXXX-XX116	/root/.config	ext4	discard,noauto	0	0```
 
