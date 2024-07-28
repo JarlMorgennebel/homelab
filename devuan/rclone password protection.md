@@ -1,7 +1,7 @@
 # Rclone .config protection
 
 Situation:
-* /root is not encrypted
+* /root is not encrypted (because your network driver sucks, like r8169, or server is remote)
 * Your storage partitions are encrypted and protected against theft/attackers
 
 ## Result
