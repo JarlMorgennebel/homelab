@@ -2,10 +2,12 @@
 
 Situation:
 * /root is not encrypted (because your network driver sucks, like r8169, or server is remote)
-* Your storage partitions are encrypted and protected against theft/attackers
+* You are using rclone to backup your data and proxy through encrypt/decrypt rclone configuration
+* Your storage partitions are LUKS-encrypted and protected against theft/attackers
 
 ## Result
-* An attacker/intruder may gain access to files by restoring the backup from rclone to an unencrypted disk
+* /root/.config/rclone.conf holds passwords and salts in cleartext :-(
+* An attacker/intruder may gain access to files by restoring the rclone-backup using rclone to an unencrypted disk
 * Your data becomes visible even if the encrypted storage areas are not decrypted
 
 ## Solution
