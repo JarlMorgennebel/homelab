@@ -46,7 +46,8 @@ Situation:
       /etc/init.d/docker start
   fi
   ````
-- Bind clevis to tang: `clevis luks bind -d /root/.configurationdisk tang '{"url":"http://mytangserver.lan"}
+- Make script executable for root:root
+- Bind clevis to tang: `clevis luks bind -d /root/.configurationdisk tang '{"url":"http://mytangserver.lan"}'
 - Disable docker start, will only be started if disk could be decrypted and mounted
 
 ## Result
