@@ -288,3 +288,12 @@ actions:
             action: climate.set_temperature
 mode: single
 ````
+
+Now the Smart Thermostats will follow the active week profile of the Homematic Wall Thermostats. Succes.
+
+### Visualisation
+Navigate to HA Overview. Search for your Smart Thermostats instances and one by one click on the 3-dot menu, select the history icon, select "Show More", again the 3-dot menu on the upper right corner, select "Add current view to a card".
+I use a "Floor Heating" Tab to show all floor heatings in one view.
+
+![Bildschirmfoto 2024-10-22 um 10 09 02](https://github.com/user-attachments/assets/3cf34d30-0108-4e2b-93c3-8bf215ea4071)
+
