@@ -102,7 +102,7 @@ climate:
 Homematic IP wall thermostats require a Helper to measure the ACTUAL_TEMPERATURE. Homematic Sensor exposes sensors already which can be used without helper.
 In HA navigate to Settings >> Devices & Services >> Helpers. Add a **sensor helper** for each Homematic IP wall thermostat.
 
-My naming convestion is "READ **room** HmIP Thermostat -> FB Smart Thermostat" which will create sensors:
+My naming convention is "READ **room** HmIP Thermostat -> FB Smart Thermostat" which will create sensors:
 
 ![Bildschirmfoto 2024-10-22 um 10 01 04](https://github.com/user-attachments/assets/4c9b0b36-a546-4421-bea7-7ba802809353)
 
