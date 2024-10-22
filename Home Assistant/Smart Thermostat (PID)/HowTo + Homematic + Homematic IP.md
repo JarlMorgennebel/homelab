@@ -6,7 +6,7 @@
 - Some rooms have radiators only, some have floor heating (water) only, some have both
 - Some rooms use Homematic Legacy (the old version), some have been upgraded to Homematic IP
 - Some rooms have a single pipe, some have two pipes per room for floor heating
-- Floor heating for 9 rooms shall be controlled by Home Assistant
+- Floor heating for 9 rooms shall be controlled by Home Assistant using PWM (Pulse Width Management) using a PID Controller
 - Selected integration is https://github.com/ScratMan/HASmartThermostat until money is found to upgrade to the Homematic IP floor heating controller
 - ON/OFF valves are controlled by Homematic HmIP-DRSI4 and HM-LC-Sw4-DR-2 (230V NO-Valves screwed on the floor distribution units)
 
