@@ -170,3 +170,5 @@ I use a "Floor Heating" Tab to show all floor heatings in one view.
 
 ### Traps
 If target temperature in one room is stuck at one specific value (mine showed 20°C for like three days) double check that the wall thermostat is not in **heating** mode but in **auto** mode. You can switch modes in the Overview tab in Home Assistant. Only in **auto** mode the thermostat will follow the stored profile and the SYNC automatisations will trigger.
+
+If you have added visualisations and they behave oddly after you tinkered with the Smart Thermostat configuration, delete them from the Dashboard and re-add them.
