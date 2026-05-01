@@ -19,6 +19,18 @@
 
 ## OPNSense
 
+### Public DNS
+ - Configure "mail.mydomain.de" to point to OPNSense WAN-address
+ - Configure "mx" weight 10 to point to mail.mydomain.de
+ - Configure "txt" for "mydomain.de" with content "v=spf1 mx -all"
+ - Configure "caa" for "@.mydomain.de" with content "0 issue "letsencrypt.org"
+ - Configure "srv" for "_imaps._tcp.mydomain.de" with content "0 1 993 mail.mydomain.de"
+ - Configure "srv" for "_submission._tcp.mydomain.de" with content "0 1 587 mail.mydomain.de"
+ - Configure "srv" for "_submissions._tcp.mydomain.de" with content "0 1 465 mail.mydomain.de"
+ - Configure "cname" for "autoconfig.mydomain.de" to "mail.mydomain.de"
+ - Configure "cname" for "autodiscover.mydomain.de" to "mail.mydomain.de"
+ - Configure "cname" for "mta-sts.mydomain.de" to "mail.mydomain.de"
+
 ### Prepare Firewall aliasses
  - Define Alias "PG_Mail" (Port Group) for ports (content) 25 (SMTP), 143, 465, 587, 993, 995
  - Define Alias "H_Mailserver" (Host) for IP 192.168.5.13
