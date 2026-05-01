@@ -39,7 +39,12 @@
  - Define new rule on WAN-Port: Pass IPv4+IPv6/TCP from any/any to WAN_address/PG_Mail (incoming mail ports)
  - Define new rule on LAN-Port: Pass IPv4/TCP from LAN-network/any to H_Mailserver/PG_Mail (local mail access)
  - Define new rule on SERVER-port: Pass IPv4/TCP from SERVER-network/any to any/PG_Mail (outgoing mail ports)
- 
+
+### AdGuard
+ - Add Filter >> DNS-Rewrites for "mail.mydomain.de" to 192.168.5.13
+   
 ### Caddy
  - ssh Login to OPNSense, use 8 for shell
- - Create /usr/local/etc/caddy/caddy.d/stalwart.conf with contents
+ - Setup passwordless scp to Server for Stalwart by creating ssh-key and copying public key to authorized host on Server
+ - Validate that
+   `ssh -i stalwart user@192.168.5.13` works without password
