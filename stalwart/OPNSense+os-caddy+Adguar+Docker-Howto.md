@@ -1,9 +1,33 @@
 # HowTo run
 
-- Stalward (Mail, WebDAV, CalDAV, CardDAV) suite in Rust
+- Stalwart (Mail, WebDAV, CalDAV, CardDAV) suite in Rust
 - behind OPNSense firewall using
 - os-caddy Caddy as reverse proxy
-- AdGuard as DNS filter for LAN and servers as DNS servers
+- AdGuard as DNS filter for LAN
 - External (Public DNS) server for
 - domain mydomain.de
 
+# Assumptions
+
+ - OPNSense has WAN-Port with dhcp IPv4 + IPv6
+ - OPNSense has LAN-Port 192.168.1.0/24
+ - OPNSense has SERVER-Port 192.168.5.0/24
+ - AdGuard for LAN-network only
+ - Server for Stalwart running on 192.168.5.13/24 standard Linux
+
+# Preparations
+
+## OPNSense
+
+### Prepare Firewall aliasses
+ - Define Alias "PG_Mail" (Port Group) for ports (content) 25 (SMTP), 143, 465, 587, 993, 995
+ - Define Alias "H_Mailserver" (Host) for IP 192.168.5.13
+
+### Define Firewall rules
+ - Define new rule on WAN-Port: Pass IPv4+IPv6/TCP from any/any to WAN_address/PG_Mail (incoming mail ports)
+ - Define new rule on LAN-Port: Pass IPv4/TCP from LAN-network/any to H_Mailserver/PG_Mail (local mail access)
+ - Define new rule on SERVER-port: Pass IPv4/TCP from SERVER-network/any to any/PG_Mail (outgoing mail ports)
+ 
+### Caddy
+ - ssh Login to OPNSense, use 8 for shell
+ - Create /usr/local/etc/caddy/caddy.d/stalwart.conf with contents
