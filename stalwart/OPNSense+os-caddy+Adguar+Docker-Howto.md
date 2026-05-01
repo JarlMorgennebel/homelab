@@ -46,4 +46,4 @@
 ### Caddy
  - ssh Login to OPNSense, use 8 for shell
  - Setup passwordless scp to Server for Stalwart by creating ssh-key and copying public key to authorized host on Server
- - Validate that `ssh -i stalwart user@192.168.5.13` works without password
+ - Validate that `ssh -i stalwart user@192.168.5.13` works without password ("stalwart" is the ssh-key to be included)
