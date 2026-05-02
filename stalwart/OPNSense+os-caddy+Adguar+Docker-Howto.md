@@ -100,5 +100,4 @@ services:
       - 993:993   # IMAPS
       - 4190:4190 # Spamfilter
     environment:
-      - TZ=Europe/Berlin
-````
+      - TZ=Europe/Berlin````
