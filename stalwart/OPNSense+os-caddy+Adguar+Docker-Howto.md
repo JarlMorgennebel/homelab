@@ -54,6 +54,13 @@ Wait for DNS updates to propagate (up multiple hours)
    - Protocol to https
    - Upstream domain to 192.168.5.13
    - Upstream port to 443
+ - Create new handler for "mail.mydomain.de", set
+   - Access >> Access List to None
+   - Protocol to https
+   - Upstream domain to 192.168.5.13
+   - Upstream port to 443
+
+This will limit access to /admin/ only from LAN-AccessList and allow all others.
 
 ### Caddy (Certificate copying to Stalwart)
 
