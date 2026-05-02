@@ -143,4 +143,11 @@ services:
  - Change bottom drop downs (default Secrect value)
    - to **Secret value read from file**
    - adjust File Path to `/opt/stalwart/certs/mail.mydomain.de.key`
+ - Confirm with "Create certificates" and check for errors to correct
+ - Stop docker Stalwart with Ctrl-C
+ - Fire up Stalwart with `docker-compose up -d`
+
+## Further configuration
+ - Access `http**s**://mail.mydomain.de/admin/`and login with new credentials
+
 
