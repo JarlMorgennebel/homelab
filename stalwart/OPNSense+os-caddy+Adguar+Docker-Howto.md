@@ -147,7 +147,13 @@ services:
  - Stop docker Stalwart with Ctrl-C
  - Fire up Stalwart with `docker-compose up -d`
 
-## Further configuration
- - Access `https://mail.mydomain.de/admin/`and login with new credentials after about 30 seconds
-
+## Further configuration: DKIM
+ - Navigate to Management >> Domains >> DKIM Signatures and copy the Public Key
+ - Add another TXT entry to Public DNS
+   - for `default._domainkey.mail.mydomain.de` with content
+     v=DKIM1; k=rsa; p=
+     and paste the Public Key without whitespaces
+ - Add anothter TXT entry to Public DNS
+   - for `_dmarc.mydomain.de` with content
+     v=DMARC1 p=quarantine rua=mailto:postmaster@mydomain.de
 
