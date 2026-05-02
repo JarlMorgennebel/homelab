@@ -77,3 +77,28 @@ This will limit access to /admin/ only from LAN-AccessList and allow all others.
  - ssh Login to OPNSense, use 8 for shell
  - Setup passwordless scp to Server for Stalwart by creating ssh-key and copying public key to authorized host on Server
  - Validate that `ssh -i stalwart user@192.168.5.13` works without password ("stalwart" is the ssh-key to be included)
+
+# Mail server host
+ - Install docker-compose, docker.io
+ - Prepare `/opt/stacks/stalwart/docker-compose.yml` with contents
+
+````
+services:
+  stalwart-mail:
+    image: stalwartlabs/stalwart:latest
+    volumes:
+      - ./stalwart-data:/opt/stalwart
+      - ./stalwart-etc/:/etc/stalwart
+      - ./stalwart-lib:/var/lib/stalwart
+    restart: unless-stopped
+    ports:
+      - 443:443   # Webfrontend
+      - 8080:8080 # Webfrontend HTTP
+      - 25:25     # SMTP
+      - 465:465   # SMTPS
+      - 587:587   # SMTPS
+      - 993:993   # IMAPS
+      - 4190:4190 # Spamfilter
+    environment:
+      - TZ=Europe/Berlin
+````
