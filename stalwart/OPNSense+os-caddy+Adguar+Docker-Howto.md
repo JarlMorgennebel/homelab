@@ -73,9 +73,7 @@ This will limit access to /admin/ only from LAN-AccessList and allow all others.
    - Routing Type global/TCP, Local Port 993, Matchers ANY, Proxy Procotol v2, Upstream Domain 192.168.5.13, Upstream Port 993
    - Routing Type global/TCP, Local Port 995, Matchers ANY, Proxy Procotol v2, Upstream Domain 192.168.5.13, Upstream Port 995
 
-### Caddy (Certificate copying to Stalwart)
-
-
+### OPNSense & Caddy (passwordless ssh to stalwart server)
  - ssh Login to OPNSense, use 8 for shell
  - Setup passwordless scp to Server for Stalwart by creating ssh-key and copying public key to authorized host on Server
  - Validate that `ssh -i stalwart user@192.168.5.13` works without password ("stalwart" is the ssh-key to be included)
