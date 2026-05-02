@@ -19,9 +19,9 @@
 
 ## Public DNS
  - Configure "mail.mydomain.de" to point to OPNSense WAN-address
- - Configure "mx" weight 10 to point to mail.mydomain.de
- - Configure "txt" for "mydomain.de" with content "v=spf1 mx -all"
- - Configure "caa" for "@.mydomain.de" with content "0 issue "letsencrypt.org"
+ - Configure "mx" for "@.mydomain.de" weight 10 to point to mail.mydomain.de
+ - Configure "txt" for "@.mydomain.de" with content "v=spf1 mx -all"
+ - Configure "caa" for "@.mydomain.de" with content "0 issue letsencrypt.org"
  - Configure "srv" for "_imaps._tcp.mydomain.de" with content "0 1 993 mail.mydomain.de"
  - Configure "srv" for "_submission._tcp.mydomain.de" with content "0 1 587 mail.mydomain.de"
  - Configure "srv" for "_submission**s**._tcp.mydomain.de" with content "0 1 465 mail.mydomain.de"
@@ -29,7 +29,7 @@
  - Configure "cname" for "autodiscover.mydomain.de" to "mail.mydomain.de"
  - Configure "cname" for "mta-sts.mydomain.de" to "mail.mydomain.de"
 
-Wait for DNS updates (multiple hours)
+Wait for DNS updates to propagate (up multiple hours)
 
 ## OPNSense
 
