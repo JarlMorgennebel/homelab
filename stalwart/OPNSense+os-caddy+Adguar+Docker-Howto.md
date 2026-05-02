@@ -104,7 +104,7 @@ services:
   - chown -R the three directories to stalwart:stalwart
   - chmod -R u=rwx,g=rws,o= the three directories
 
-### OPNSense & Caddy (passwordless ssh to stalwart server)
+### OPNSense & Caddy (passwordless scp of certificates to stalwart server)
  - ssh Login to OPNSense, use 8 for shell
  - Setup passwordless scp to Mailserver for user stlwart by creating ssh-key and copying public key to authorized host on Server
  - Validate that `ssh -i stalwart stalwart@192.168.5.13` works without password ("stalwart" is the ssh-key to be included and the user)
