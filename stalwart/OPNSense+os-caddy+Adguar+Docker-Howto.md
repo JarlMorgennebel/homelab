@@ -151,5 +151,5 @@ services:
  - Navigate to Management >> Domains >> DKIM Signatures and copy the Public Key
  - Add another TXT entry to Public DNS
    - for `default._domainkey.mydomain.de` with content `v=DKIM1; k=rsa; p=` and paste the Public Key without whitespaces
- - Add anothter TXT entry to Public DNS for `_dmarc.mydomain.de` with content `v=DMARC1; p=reject; rua=mailto:postmaster@mydomain.de; pct=100; adkim=r; fo=0
+ - Add anothter TXT entry to Public DNS for `_dmarc.mydomain.de` with content `v=DMARC1; p=reject; rua=mailto:postmaster@mydomain.de; pct=100; adkim=r; fo=0`
  - Validate your settings at https://dmarcadvisor.com/de/domain-check/
