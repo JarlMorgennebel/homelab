@@ -34,7 +34,7 @@ Wait for DNS updates to propagate (up multiple hours)
 ## OPNSense
 
 ### Prepare Firewall aliasses
- - Define Alias "PG_Mail" (Port Group) for ports (content) 25 (SMTP), 143, 465, 587, 993, 995
+ - Define Alias "PG_Mail" (Port Group) for ports (content) 25 (SMTP), 110 (POP3), 143 (IMAP), 465 (SMTPS), 587 (SMTPS), 993 (IMAPS), 995 (POP3S)
  - Define Alias "H_Mailserver" (Host) for IP 192.168.5.13
 
 ### Define Firewall rules
