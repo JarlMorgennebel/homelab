@@ -100,4 +100,11 @@ services:
       - 993:993   # IMAPS
       - 4190:4190 # Spamfilter
     environment:
-      - TZ=Europe/Berlin````
+      - TZ=Europe/Berlin
+````
+  - Create group stalwart with GID = 2000
+  - Create user stalwart with UID = 2000
+  - Create directories `/opt/stacks/stalwart/stalwart-{data|lib|etc}`
+  - Create directory `/opt/stacks/stalwart/stalwart-data/certs`
+  - chown -R the three directories to stalwart:stalwart
+  - chmod -R u=rwx,g=rws,o= the three directories
