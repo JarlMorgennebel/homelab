@@ -148,6 +148,6 @@ services:
  - Fire up Stalwart with `docker-compose up -d`
 
 ## Further configuration
- - Access `http**s**://mail.mydomain.de/admin/`and login with new credentials
+ - Access `https://mail.mydomain.de/admin/`and login with new credentials after about 30 seconds
 
 
