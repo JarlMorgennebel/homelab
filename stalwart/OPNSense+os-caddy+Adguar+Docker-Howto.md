@@ -26,7 +26,7 @@
  - Configure "caa" for "@.mydomain.de" with content "0 issue "letsencrypt.org"
  - Configure "srv" for "_imaps._tcp.mydomain.de" with content "0 1 993 mail.mydomain.de"
  - Configure "srv" for "_submission._tcp.mydomain.de" with content "0 1 587 mail.mydomain.de"
- - Configure "srv" for "_submissions._tcp.mydomain.de" with content "0 1 465 mail.mydomain.de"
+ - Configure "srv" for "_submission*s*._tcp.mydomain.de" with content "0 1 465 mail.mydomain.de"
  - Configure "cname" for "autoconfig.mydomain.de" to "mail.mydomain.de"
  - Configure "cname" for "autodiscover.mydomain.de" to "mail.mydomain.de"
  - Configure "cname" for "mta-sts.mydomain.de" to "mail.mydomain.de"
