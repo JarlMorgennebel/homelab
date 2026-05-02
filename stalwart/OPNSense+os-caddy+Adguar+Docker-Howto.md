@@ -111,3 +111,36 @@ services:
  - Setup passwordless scp to Mailserver for user stlwart by creating ssh-key and copying public key to authorized host on Server
  - Validate that `ssh -i stalwart stalwart@192.168.5.13` works without password ("stalwart" is the ssh-key to be included and the user)
  - Setup a cronjob at 03:00 daily to copy `/var/db/caddy/data/caddy/certificates/acme-v02.api.letsencrypt.org-directory/mail.mydomain.de/mail.mydomain.de.{crt|key}` to `/opt/stacks/stalwart/stalwart-data/certs`
+
+# Finally - Stalwart
+
+## Initial Setup
+ - Fire up Stalwart on mailhost using `docker-compose up`and use temporary admin account highlight to login to `http://192.168.5.13:8080/admin/` (**not** https!)
+ - Wizard **Step 1**:
+   - set Serverhostname to `mail.mydomain.de`
+   - default Domain to m̀ydomain.de`
+   - **Disable** Obtail TLS certificate (will come from Caddy)
+ - Wizard **Step 22**:
+   - Keep defaults
+ - Wzard **Step 3**:
+   - Keep defaults
+ - Wizard **Step 4**:
+   - set Log Destionation to Console (for docker)
+ - Wizard **Step 5**:
+   - Keep "Manual DNS server management"
+ - Finish Setup and write down new password
+ - Wait 5 seconds
+ - Interrupt docker with Ctrl-C and restart the same container. After some time you should see errors that no certificates are available. Yay!
+
+## Certificate Setup
+ - **Using the passwordless-scp-command from above**: copy the certificates manually
+   
+ - Login to `http://192.168.5.13:8080/admin/login` (still **not** https!) using your **new** credentials from the Initial setup
+ - Navigate to Settings >> TLS >> Certificates (which should be empty) and click on **Create certificate**
+ - Change top drop down (default Text value)
+   - to **Text value read from file**
+   - adjust File Path to `/opt/stalwart/certs/mail.mydomain.de.crt`
+ - Change bottom drop downs (default Secrect value)
+   - to **Secret value read from file**
+   - adjust File Path to `/opt/stalwart/certs/mail.mydomain.de.key`
+
