@@ -49,11 +49,11 @@ Wait for DNS updates to propagate (up multiple hours)
  - Login to OPNSense >> Services >> Caddy >> Reverse Proxy
  - Create new domain "mail.mydomain.de" - Access List "None"
  - Create new handler for "mail.mydomain.de", enable Advanced Mode, set
- -- Access >> Access List >> LAN-network only
- -- Handler >> Path to "/admin/*"
- -- Protocol to https
- -- Upstream domain to 192.168.5.13
- -- Upstream port to 443
+ - - Access >> Access List >> LAN-network only
+ - - Handler >> Path to "/admin/*"
+ - - Protocol to https
+ - - Upstream domain to 192.168.5.13
+ - - Upstream port to 443
 
 ### Caddy (Certificate copying to Stalwart)
 
