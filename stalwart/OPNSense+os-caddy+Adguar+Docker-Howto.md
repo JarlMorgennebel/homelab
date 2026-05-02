@@ -133,8 +133,7 @@ services:
  - Interrupt docker with Ctrl-C and restart the same container. After some time you should see errors that no certificates are available. Yay!
 
 ## Certificate Setup
- - **Using the passwordless-scp-command from above**: copy the certificates manually and make sure that user Stalwart (2000/2000) can read them!
-   
+ - **Using the passwordless-scp-command from above**: copy the certificates manually and make sure that user Stalwart (2000/2000) can read them!   
  - Login to `http://192.168.5.13:8080/admin/login` (still **not** https!) using your **new** credentials from the Initial setup
  - Navigate to Settings >> TLS >> Certificates (which should be empty) and click on **Create certificate**
  - Change top drop down (default Text value)
