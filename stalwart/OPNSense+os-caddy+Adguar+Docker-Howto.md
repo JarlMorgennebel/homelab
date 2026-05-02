@@ -45,7 +45,19 @@ Wait for DNS updates to propagate (up multiple hours)
 ### AdGuard
  - Add Filter >> DNS-Rewrites for "mail.mydomain.de" to 192.168.5.13
    
-### Caddy
+### Caddy (Reverse Proxy)
+ - Login to OPNSense >> Services >> Caddy >> Reverse Proxy
+ - Create new domain "mail.mydomain.de" - Access List "None"
+ - Create new handler for "mail.mydomain.de", enable Advanced Mode, set
+ -- Access >> Access List >> LAN-network only
+ -- Handler >> Path to "/admin/*"
+ -- Protocol to https
+ -- Upstream domain to 192.168.5.13
+ -- Upstream port to 443
+
+### Caddy (Certificate copying to Stalwart)
+
+
  - ssh Login to OPNSense, use 8 for shell
  - Setup passwordless scp to Server for Stalwart by creating ssh-key and copying public key to authorized host on Server
  - Validate that `ssh -i stalwart user@192.168.5.13` works without password ("stalwart" is the ssh-key to be included)
