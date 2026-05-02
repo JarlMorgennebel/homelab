@@ -13,6 +13,7 @@
  - OPNSense has LAN-Port 192.168.1.0/24
  - OPNSense has SERVER-Port 192.168.5.0/24
  - AdGuard for LAN-network only
+ - Caddy managing certificates used by Stalwart
  - Server for Stalwart running on 192.168.5.13/24 standard Linux
 
 # Preparations
