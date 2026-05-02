@@ -62,6 +62,7 @@ Wait for DNS updates to propagate (up multiple hours)
    - Upstream port to 443
 
 This will limit access to /admin/ only from LAN-AccessList and allow all others.
+Access will not work until certificates have been copied over from Caddy at OPNSense (see below).
 
 ### Caddy (Layer4 proxy)
  - Login to OPNSense >> Services >> Caddy >> General Settings and enable Layer4 proxy
