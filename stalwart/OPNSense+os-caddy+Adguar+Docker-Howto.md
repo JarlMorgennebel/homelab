@@ -17,9 +17,7 @@
 
 # Preparations
 
-## OPNSense
-
-### Public DNS
+## Public DNS
  - Configure "mail.mydomain.de" to point to OPNSense WAN-address
  - Configure "mx" weight 10 to point to mail.mydomain.de
  - Configure "txt" for "mydomain.de" with content "v=spf1 mx -all"
@@ -30,6 +28,10 @@
  - Configure "cname" for "autoconfig.mydomain.de" to "mail.mydomain.de"
  - Configure "cname" for "autodiscover.mydomain.de" to "mail.mydomain.de"
  - Configure "cname" for "mta-sts.mydomain.de" to "mail.mydomain.de"
+
+Wait for DNS updates (multiple hours)
+
+## OPNSense
 
 ### Prepare Firewall aliasses
  - Define Alias "PG_Mail" (Port Group) for ports (content) 25 (SMTP), 143, 465, 587, 993, 995
