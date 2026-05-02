@@ -62,6 +62,17 @@ Wait for DNS updates to propagate (up multiple hours)
 
 This will limit access to /admin/ only from LAN-AccessList and allow all others.
 
+### Caddy (Layer4 proxy)
+ - Login to OPNSense >> Services >> Caddy >> General Settings and enable Layer4 proxy
+ - Navigate to OPNSense >> Services >> Caddy >> Layer4 Proxy and add Layer4 Routes
+   - Sequence 1: Routing Type global/TCP, Local Port 25, Matchers ANY, Proxy Procotol v2, Upstream Domain 192.168.5.13, Upstream Port 25
+   - Sequence 2: Routing Type global/TCP, Local Port 110, Matchers ANY, Proxy Procotol v2, Upstream Domain 192.168.5.13, Upstream Port 110
+   - Sequence 3: Routing Type global/TCP, Local Port 143, Matchers ANY, Proxy Procotol v2, Upstream Domain 192.168.5.13, Upstream Port 143
+   - Sequence 4: Routing Type global/TCP, Local Port 465, Matchers ANY, Proxy Procotol v2, Upstream Domain 192.168.5.13, Upstream Port 465
+   - Sequence 5: Routing Type global/TCP, Local Port 587, Matchers ANY, Proxy Procotol v2, Upstream Domain 192.168.5.13, Upstream Port 587
+   - Sequence 6: Routing Type global/TCP, Local Port 993, Matchers ANY, Proxy Procotol v2, Upstream Domain 192.168.5.13, Upstream Port 993
+   - Sequence 7: Routing Type global/TCP, Local Port 995, Matchers ANY, Proxy Procotol v2, Upstream Domain 192.168.5.13, Upstream Port 995
+
 ### Caddy (Certificate copying to Stalwart)
 
 
